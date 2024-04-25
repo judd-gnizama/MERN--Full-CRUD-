@@ -28,7 +28,7 @@ const Login = () => {
       setUser({ email, posts: []})
       // Navigate to dashboard
       navigate('/dashboard')
-
+      setError(null);
     } catch (error) {
       setError(error.message)
     }

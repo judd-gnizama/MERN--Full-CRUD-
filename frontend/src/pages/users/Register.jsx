@@ -35,6 +35,7 @@ const Register = () => {
       setUser({ email: formData.email, posts: []})
       // Navigate to dashboard
       navigate('/dashboard')
+      setError(null);
 
     } catch(error) {
       setError(error.message)
