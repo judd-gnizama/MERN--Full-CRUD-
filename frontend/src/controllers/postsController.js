@@ -10,4 +10,22 @@ const getPosts = async () => {
   return data;
 }
 
-export { getPosts }
+// ------------------------ GET ALL POSTS OF USER ---------------------------
+const getUserPosts = async () => {
+  const res = await fetch('/api/posts/user', {
+    headers: {
+      "Authorization"   : `Bearer ${localStorage.getItem('token')}`,
+    }
+  })
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw Error(error.message)
+  }
+
+  return data;
+
+}
+
+export { getPosts, getUserPosts }

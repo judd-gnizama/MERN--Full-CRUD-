@@ -12,7 +12,8 @@ const getPosts = async (req, res) => {
   }
 };
 
-// ------------------ GET ALL POSTS FROM A USER ---------------------------------
+// ------------- GET ALL POSTS FROM A USER ---------------------------------
+
 const getUserPosts = async (req, res) => {
 
   // Grab authenticated user from request body
