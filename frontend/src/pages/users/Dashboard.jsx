@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getUserPosts } from "../../controllers/postsController";
+import { deletePost, getUserPosts } from "../../controllers/postsController";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import Post from "../../components/Post";
@@ -10,9 +10,16 @@ const Dashboard = () => {
   const { user, setUser } = useContext(UserContext);
 
   // Handle Delete Post
-  const handleDelete = (id) => {
-    console.log(id)
+  const handleDelete = async (_id) => {
+    try {
+      const data = await deletePost(_id);
+    } catch (error) {
+      console.log(error.message);
+    }
+    const newPosts = user.posts.filter(post => post._id !== _id)
+    setUser({...user, posts: newPosts})
   }
+
 
   // Loading State
   const [ loading, setLoading ] = useState(true);

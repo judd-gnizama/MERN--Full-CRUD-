@@ -28,7 +28,6 @@ const getUserPosts = async () => {
 
 }
 
-
 // ------------------------ CREATE POST ---------------------------
 const createPost = async (title, body) => {
   if (!title || !body) {
@@ -54,4 +53,22 @@ const createPost = async (title, body) => {
 
 }
 
-export { getPosts, getUserPosts, createPost }
+// ------------------------ CREATE POST ---------------------------
+const deletePost = async (_id) => {
+  const res = await fetch(`/api/posts/${_id}`, {
+    method: 'DELETE', 
+    headers: { 
+      "Authorization" : `Bearer ${localStorage.getItem('token')}`
+    }
+  });
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw Error(data.error)
+  }
+
+  return data;
+
+}
+
+export { getPosts, getUserPosts, createPost, deletePost }
