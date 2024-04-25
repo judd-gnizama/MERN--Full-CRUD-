@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Alert from "../../components/Alert"
+import { registerUser } from "../../controllers/usersControllers";
 
 const Register = () => {
 
@@ -13,9 +14,19 @@ const Register = () => {
     passwordConfirm: '',
   });
 
-  const handleRegister = (event) => {
+  const handleRegister = async (event) => {
     event.preventDefault();
-    console.log(formData)
+
+    try {
+      await registerUser(
+        formData.email, 
+        formData.password, 
+        formData.passwordConfirm
+      )
+    } catch(error) {
+      setError(error.message)
+    }
+
     
   }
 
@@ -46,7 +57,7 @@ const Register = () => {
         value={formData.passwordConfirm} 
         onChange={(e) => setFormData({ ...formData, passwordConfirm: e.target.value })}
         autoFocus />
-        <button className="btn">Login</button>
+        <button className="btn">Register</button>
       </form>
       { error && <Alert msg={error}/> }
     </section>

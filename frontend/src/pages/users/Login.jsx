@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Alert from "../../components/Alert"
+import { loginUser } from "../../controllers/usersControllers";
 
 const Login = () => {
 
@@ -7,12 +8,16 @@ const Login = () => {
   const [ error, setError ] = useState(null);
   
   // Form data state
-  const [ email, setEmail ] = useState(null);
-  const [ password, setPassword ] = useState(null);
+  const [ email, setEmail ] = useState("");
+  const [ password, setPassword ] = useState("");
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
-    console.log(email, password);
+    try {
+      await loginUser(email, password)
+    } catch (error) {
+      setError(error.message)
+    }
     
   }
 
