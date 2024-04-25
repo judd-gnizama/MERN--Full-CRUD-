@@ -4,25 +4,35 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import Post from "../../components/Post";
 import { Link } from "react-router-dom";
+import Alert from "../../components/Alert";
+import Success from "../../components/Success";
 
 const Dashboard = () => {
-
+  // Use User context
   const { user, setUser } = useContext(UserContext);
+
+  // Loading State
+  const [ loading, setLoading ] = useState(true);
+
+  // Error State
+  const [ error, setError ] = useState(null);
+
+  // Success State
+  const [ success, setSuccess ] = useState(null);
+
+
 
   // Handle Delete Post
   const handleDelete = async (_id) => {
     try {
       const data = await deletePost(_id);
+      setSuccess(data.success);
     } catch (error) {
-      console.log(error.message);
+      setError(error.message)
     }
     const newPosts = user.posts.filter(post => post._id !== _id)
     setUser({...user, posts: newPosts})
   }
-
-
-  // Loading State
-  const [ loading, setLoading ] = useState(true);
 
   useEffect(() => {
     setTimeout(async () => {
@@ -42,6 +52,9 @@ const Dashboard = () => {
     {loading && (
         <i className="fa-solid fa-arrow-rotate-right animate-spin text-3xl text-center block"></i>
       )}
+    
+    { success && <Success msg={success}/>}
+    { error && <Alert msg={error}/>}
 
     { user.posts?.map((post, index) => (
       <div key={index}>
