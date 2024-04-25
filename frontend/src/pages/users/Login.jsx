@@ -1,8 +1,16 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import Alert from "../../components/Alert"
 import { loginUser } from "../../controllers/usersControllers";
+import { UserContext } from '../../contexts/UserContext'
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+
+  // Use user context
+  const { setUser } = useContext(UserContext)
+
+  // Use Navigate Hook
+  const navigate = useNavigate();
 
   // Error State
   const [ error, setError ] = useState(null);
@@ -14,7 +22,13 @@ const Login = () => {
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
-      await loginUser(email, password)
+      // Login user
+      await loginUser(email, password);
+      //Update user state
+      setUser({ email, posts: []})
+      // Navigate to dashboard
+      navigate('/dashboard')
+
     } catch (error) {
       setError(error.message)
     }

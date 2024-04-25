@@ -1,8 +1,16 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import Alert from "../../components/Alert"
 import { registerUser } from "../../controllers/usersControllers";
+import { UserContext } from '../../contexts/UserContext'
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+
+  // Use user context
+  const { setUser } = useContext(UserContext)
+
+  // Use Navigate Hook
+  const navigate = useNavigate();
 
   // Error State
   const [ error, setError ] = useState(null);
@@ -23,6 +31,11 @@ const Register = () => {
         formData.password, 
         formData.passwordConfirm
       )
+      //Update user state
+      setUser({ email: formData.email, posts: []})
+      // Navigate to dashboard
+      navigate('/dashboard')
+
     } catch(error) {
       setError(error.message)
     }
