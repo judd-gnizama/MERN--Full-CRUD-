@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
 
 const Layout = () => {
+
   return (
     <>
       <header className="bg-indigo-500 text-white">
@@ -12,6 +13,9 @@ const Layout = () => {
           </div>
         </nav>
       </header>
+      <main className="p-4">
+        <Outlet/>
+      </main>
     </>
   )
 }
