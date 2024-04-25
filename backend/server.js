@@ -11,6 +11,8 @@ app.use(express.json()); // middleware that intercepts requests but must be json
 app.use('/api/posts', postsRoutes)
 app.use('/api/users', usersRoutes)
 
+//"mongodb://localhost:27017"
+
 mongoose.connect("mongodb://localhost:27017", { dbName: "demo_db" }).then(()=>{
   console.log("Connected to DB successfully")
 })
