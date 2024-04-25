@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import Alert from "../../components/Alert"
-import { loginUser } from "../../controllers/usersControllers";
+import { loginUser } from "../../controllers/usersController";
 import { UserContext } from '../../contexts/UserContext'
 import { useNavigate } from "react-router-dom";
 
