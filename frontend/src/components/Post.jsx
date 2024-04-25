@@ -1,10 +1,12 @@
 const Post = ({ post, children }) => {
+
   return (
   <div className="mb-4">
     <div className="flex items-start justify-between">
       <div>
         <h2 className="font-bold text-lg text-indigo-600">{post.title}</h2>
         <p className="text-[10px] text-slate-500">{new Date(post.createdAt).toLocaleDateString()}</p>
+        <p className="font-bold text-sm">{`By ${post._id}`}</p>
       </div>
       <div>{children}</div>
     </div>

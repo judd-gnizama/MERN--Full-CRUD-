@@ -13,9 +13,9 @@ app.use('/api/users', usersRoutes)
 
 //"mongodb://localhost:27017"
 
-mongoose.connect("mongodb://localhost:27017", { dbName: "demo_db" }).then(()=>{
+mongoose.connect(process.env.DB_URI, { dbName: "demo_db" }).then(()=>{
   console.log("Connected to DB successfully")
 })
 .catch((error) => {console.log("error", error)})
 
-app.listen(4000, 'localhost', () => console.log("Listening to port 4000"))
+app.listen(4000, () => console.log("Listening to port 4000"))
