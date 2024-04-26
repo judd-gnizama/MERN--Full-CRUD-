@@ -7,7 +7,10 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: process.env.NODE_ENV === 'development' ? {
-      target: 'http://localhost:4000'
+      '/api' : {
+        target: 'http://localhost:4000',
+        changeOrigin: true
+      }
     } : {}
   }
 })
