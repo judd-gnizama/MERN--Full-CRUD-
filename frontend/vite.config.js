@@ -9,7 +9,8 @@ export default defineConfig({
     // proxy: process.env.NODE_ENV === 'development' ? {
       proxy: true ? {
       '/api' : {
-        target: "http://localhost:4000"
+        target: "https://mern-full-crud.onrender.com", 
+        changeOrigin: true
       }
     } : {}
   }
