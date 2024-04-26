@@ -3,8 +3,20 @@ import { postsRoutes } from './routes/postsRoutes.js';
 import { usersRoutes } from './routes/usersRoutes.js';
 import mongoose from 'mongoose';
 
-
 const app = express();
+
+const cors = require('cors')
+
+const corsOptions = {
+  origin: 'https://mern-full-crud-2f4x.onrender.com',
+  methods: 'GET,POST,PUT,DELETE',  // Allowed HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],  // Allowed headers
+  credentials: true // Optional: Allow cookies or authorization credentials (if applicable)
+};
+
+const corsMiddleware = cors(corsOptions);
+
+app.use(corsMiddleware);
 
 app.use(express.json()); // middleware that intercepts requests but must be json
 
