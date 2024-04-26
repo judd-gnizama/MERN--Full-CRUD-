@@ -6,7 +6,7 @@ import cors from 'cors'
 
 const app = express();
 
-const mode = 'development'
+const mode = process.env.NODE_ENV
 
 const corsOptions = mode === 'development' ? {
   origin: '*'
