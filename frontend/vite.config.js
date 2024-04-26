@@ -6,9 +6,10 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    proxy: process.env.NODE_ENV === 'development' ? {
+    // proxy: process.env.NODE_ENV === 'development' ? {
+      proxy: true ? {
       '/api' : {
-        target: "https://mern-full-crud.onrender.com"
+        target: "http://localhost:4000"
       }
     } : {}
   }
