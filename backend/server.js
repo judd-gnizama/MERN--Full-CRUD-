@@ -7,8 +7,10 @@ import cors from 'cors'
 const app = express();
 
 
-const corsOptions = {
-  origin: process.env.NODE_ENV === 'developement' ? '*' : 'https://mern-full-crud-2f4x.onrender.com/',
+const corsOptions = process.env.NODE_ENV === 'developement' ? {
+  origin: '*'
+} : {
+  origin: 'https://mern-full-crud-2f4x.onrender.com/',
   methods: 'GET,POST,PUT,DELETE',  // Allowed HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],  // Allowed headers
   credentials: true // Optional: Allow cookies or authorization credentials (if applicable)
