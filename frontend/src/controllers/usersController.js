@@ -1,6 +1,4 @@
-
-const backendBaseURL = process.env.NODE_ENV === 'development' ? process.env.BACKEND_URL_DEV : process.env.BACKEND_URL_DEPLOY
-
+const backendBaseURL = process.env.NODE_ENV === 'development' ? "http://localhost:4000" : "https://mern-full-crud.onrender.com"
 
 
 // ------------------------ LOGIN USER ----------------------------
