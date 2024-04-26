@@ -1,3 +1,6 @@
+
+const backendBaseURL = "https://mern-full-crud.onrender.com"
+
 // ------------------------ LOGIN USER ----------------------------
 
 const loginUser = async (email, password) => {
@@ -5,7 +8,7 @@ const loginUser = async (email, password) => {
     throw Error('All fields are required')
   }
 
-  const res = await fetch('/api/users/login', {
+  const res = await fetch(`${backendBaseURL}/api/users/login`, {
     method: 'POST', 
     headers: {
       'Content-Type' : 'application/json'
@@ -37,7 +40,7 @@ const registerUser = async (email, password, passwordConfirm) => {
     throw Error("Passwords do not match");
   }
 
-  const res = await fetch('/api/users', {
+  const res = await fetch(`${backendBaseURL}/api/users`, {
     method: 'POST', 
     headers: {
       'Content-Type' : 'application/json'
