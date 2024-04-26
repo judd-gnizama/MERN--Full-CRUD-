@@ -1,5 +1,5 @@
 
-const backendBaseURL = "https://mern-full-crud.onrender.com"
+const backendBaseURL = process.env.NODE_ENV === 'development' ? "http://localhost:4000" : "https://mern-full-crud.onrender.com"
 
 // ------------------------ GET ALL POSTS ---------------------------
 const getPosts = async () => {

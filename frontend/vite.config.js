@@ -5,6 +5,10 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  server: {}
+  server: {
+    proxy: process.env.NODE_ENV === 'development' ? {
+      target: 'http://localhost:4000'
+    } : {}
+  }
 })
 
