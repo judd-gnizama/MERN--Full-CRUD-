@@ -16,7 +16,7 @@ const corsOptions = {
 
 const corsMiddleware = cors(corsOptions);
 
-app.use(corsMiddleware);
+// app.use(corsMiddleware);
 
 app.use(express.json()); // middleware that intercepts requests but must be json
 
