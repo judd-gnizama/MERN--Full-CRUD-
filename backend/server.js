@@ -8,7 +8,7 @@ const app = express();
 
 
 const corsOptions = {
-  origin: 'https://mern-full-crud-2f4x.onrender.com',
+  origin: process.env.NODE_ENV === 'development' ? 'http://localhost:5173' : 'https://mern-full-crud-2f4x.onrender.com/',
   methods: 'GET,POST,PUT,DELETE',  // Allowed HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],  // Allowed headers
   credentials: true // Optional: Allow cookies or authorization credentials (if applicable)
