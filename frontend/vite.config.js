@@ -6,8 +6,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    // proxy: process.env.NODE_ENV === 'development' ? {
-      proxy: true ? {
+    proxy: process.env.NODE_ENV === 'development' ? {
       '/api' : {
         target: "https://mern-full-crud.onrender.com", 
         changeOrigin: true
