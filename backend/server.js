@@ -7,7 +7,7 @@ import cors from 'cors'
 const app = express();
 
 
-const corsOptions = process.env.NODE_ENV === 'developement' ? {
+const corsOptions = process.env.NODE_ENV === 'development' ? {
   origin: '*'
 } : {
   origin: 'https://mern-full-crud-2f4x.onrender.com',
