@@ -2,10 +2,10 @@ import express from 'express'
 import { postsRoutes } from './routes/postsRoutes.js';
 import { usersRoutes } from './routes/usersRoutes.js';
 import mongoose from 'mongoose';
+import cors from 'cors'
 
 const app = express();
 
-const cors = require('cors')
 
 const corsOptions = {
   origin: 'https://mern-full-crud-2f4x.onrender.com',
