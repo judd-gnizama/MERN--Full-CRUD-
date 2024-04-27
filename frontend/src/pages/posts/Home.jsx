@@ -27,7 +27,9 @@ const Home = () => {
       <h1 className="title">Latest Posts</h1>
 
       {loading && (
-        <i className="fa-solid fa-arrow-rotate-right animate-spin text-3xl text-center block"></i>
+        <div className="flex flex-col items-center">
+          <i className="fa-solid fa-arrow-rotate-right animate-spin text-3xl text-center block"></i>
+        </div>
       )}
 
       { posts?.map((post, index) => <div key={index}>
