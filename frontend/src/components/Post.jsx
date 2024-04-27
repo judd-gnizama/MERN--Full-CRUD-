@@ -14,7 +14,7 @@ const Post = ({ post, children }) => {
       <h2 className="font-bold text-2xl text-indigo-600 break-words mt-4 ml-2">{post.title}</h2>
     </div>
     <p className="text-sm mt-2 ml-2 break-words">{post.body}</p>
-    <div>{children}</div>
+    <div className="pt-4">{children}</div>
   </div>
   )
 }
