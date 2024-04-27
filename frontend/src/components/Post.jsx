@@ -2,17 +2,19 @@
 const Post = ({ post, children }) => {
 
   return (
-  <div className="mb-4">
-    <div className="flex items-start justify-between">
-      <div>
-        <h2 className="font-bold text-lg text-indigo-600 break-words">{post.title}</h2>
-        <p className="text-[10px] text-slate-500">{new Date(post.createdAt).toLocaleDateString()}</p>
-        <p className="font-bold text-sm">{`By ${post.user}`}</p>
+  <div className="border rounded-xl border-slate-400 p-4 my-2">
+    <div className="flex flex-col">
+      <div className="flex gap-2 items-center">
+        <i className="fa-solid fa-user w-8 h-8 items-center flex justify-center p-2 rounded-full bg-slate-400"></i>
+        <div >
+          <p className="font-bold text-sm">{`${post.username}`}</p>
+          <p className="text-[10px] text-slate-500">{new Date(post.createdAt).toLocaleDateString()}</p>
+        </div>
       </div>
-      <div>{children}</div>
+      <h2 className="font-bold text-2xl text-indigo-600 break-words mt-4 ml-2">{post.title}</h2>
     </div>
-    <p className="text-sm mt-4 break-words">{post.body}</p>
-    <div className="h-px w-full bg-gradient-to-r from-indigo-50 via-indigo-500/70 to-indigo-50 mt-6"></div>
+    <p className="text-sm mt-2 ml-2 break-words">{post.body}</p>
+    <div>{children}</div>
   </div>
   )
 }

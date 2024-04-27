@@ -42,7 +42,7 @@ const Dashboard = () => {
     setTimeout(async () => {
       const email = localStorage.getItem('email');
       const { userPosts } = await getUserPosts();
-      setUser({email, posts: userPosts})
+      setUser({...user, email: email, posts: userPosts})
       setLoading(false);
     }, 500)
   }, [])
@@ -50,8 +50,8 @@ const Dashboard = () => {
   return( 
   <section className="card">
 
-    <p>{user.email}</p>
     <h1 className="title">User Dashboard</h1>
+    <p className="mb-8">{user.username}</p>
 
     {loading && (
         <i className="fa-solid fa-arrow-rotate-right animate-spin text-3xl text-center block"></i>

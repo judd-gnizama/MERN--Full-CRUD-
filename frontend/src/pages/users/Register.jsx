@@ -20,16 +20,18 @@ const Register = () => {
     email: '', 
     password: '', 
     passwordConfirm: '',
+    username: '',
   });
 
   const handleRegister = async (event) => {
     event.preventDefault();
-
+    console.log(formData)
     try {
       await registerUser(
         formData.email, 
         formData.password, 
-        formData.passwordConfirm
+        formData.passwordConfirm,
+        formData.username,
       )
       //Update user state
       setUser({ email: formData.email, posts: []})
@@ -57,6 +59,14 @@ const Register = () => {
         autoFocus />
 
         <input 
+        type="text" 
+        placeholder="Username" 
+        className="input"
+        value={formData.username} 
+        onChange={(e) => setFormData({ ...formData, username: e.target.value })} 
+        autoFocus />
+        
+        <input 
         type="password" 
         placeholder="Password" 
         className="input" 
@@ -72,6 +82,7 @@ const Register = () => {
         onChange={(e) => setFormData({ ...formData, passwordConfirm: e.target.value })}
         autoFocus />
         <button className="btn">Register</button>
+
       </form>
       { error && <Alert msg={error}/> }
     </section>

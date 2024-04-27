@@ -23,7 +23,9 @@ const loginUser = async (email, password) => {
   }
 
   localStorage.setItem('token', data.token);
+  localStorage.setItem('username', data.username);
   localStorage.setItem('email', data.email);
+
 
   return data;
 
@@ -31,8 +33,8 @@ const loginUser = async (email, password) => {
 
 
 // ------------------------ REGISTER USER ----------------------------
-const registerUser = async (email, password, passwordConfirm) => {
-  if (!email || !password || !passwordConfirm) {
+const registerUser = async (email, password, passwordConfirm, username) => {
+  if (!email || !username || !password || !passwordConfirm) {
     throw Error("All fields are required");
   }
 
@@ -45,7 +47,7 @@ const registerUser = async (email, password, passwordConfirm) => {
     headers: {
       'Content-Type' : 'application/json'
     },
-    body: JSON.stringify({ email, password })
+    body: JSON.stringify({ email, password, username: `@${username.toLowerCase()}` })
   })
 
   const data = await res.json();
@@ -56,6 +58,7 @@ const registerUser = async (email, password, passwordConfirm) => {
 
   localStorage.setItem('token', data.token);
   localStorage.setItem('email', data.email);
+  localStorage.setItem('username', data.username);
 
   return data;
 

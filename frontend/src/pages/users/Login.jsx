@@ -23,9 +23,9 @@ const Login = () => {
     event.preventDefault();
     try {
       // Login user
-      await loginUser(email, password);
+      const data = await loginUser(email, password);
       //Update user state
-      setUser({ email, posts: []})
+      setUser({ email, posts: [], username: data.username})
       // Navigate to dashboard
       navigate('/dashboard')
       setError(null);

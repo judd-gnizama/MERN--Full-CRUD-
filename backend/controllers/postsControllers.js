@@ -42,7 +42,7 @@ const addPost = async (req, res) => {
   const user = await User.findById(req.user._id)
 
   try {
-    const post = await Post.create({ user: user._id, title, body });
+    const post = await Post.create({ user: user._id, username: user.username, title, body });
     res.status(200).json({ success: "Post created", post})
   } catch (error) {
     res.status(500).json({ error: error.message })
