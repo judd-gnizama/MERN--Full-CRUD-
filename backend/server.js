@@ -44,7 +44,6 @@ app.get('*', (req, res) =>
 res.sendFile(path.join(__dirname,'/frontend/dist')))
 
 
-
 //"mongodb://localhost:27017"
 
 mongoose.connect(process.env.DB_URI, { dbName: "demo_db" }).then(()=>{
