@@ -37,11 +37,11 @@ app.use('/api/users', usersRoutes)
 
 
 // use the client app
-app.use(express.static(path.join(__dirname,'/client/dist')))
+app.use(express.static(path.join(__dirname,'/frontend/dist')))
 
 // Render client for any path
 app.get('*', (req, res) => 
-res.sendFile(path.join(__dirname,'/client/dist')))
+res.sendFile(path.join(__dirname,'/frontend/dist')))
 
 
 
